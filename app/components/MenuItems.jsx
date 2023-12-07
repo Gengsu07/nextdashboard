@@ -5,7 +5,7 @@ const MenuItems = ({ item }) => {
   return (
     <Link
       href={item.path}
-      className="flex items-center gap-3 p-3 hover:bg-[#2e374a] max-w-full"
+      className="flex items-center gap-3 p-3 hover:bg-[#2e374a] rounded-xl mr-3 max-w-full"
     >
       {Icon}
       {item.title}
