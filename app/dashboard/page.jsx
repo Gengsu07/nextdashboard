@@ -16,7 +16,7 @@ const Dashboard = () => {
         <div>
           <Transaction />
         </div>
-        <div>
+        <div className="max-w-full h-full">
           <Chart />
         </div>
       </div>
