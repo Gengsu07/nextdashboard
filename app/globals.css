@@ -16,6 +16,10 @@
     color: inherit;
     text-decoration: none;
   }
+
+  table td {
+    @apply p-2;
+  }
 }
 
 @layer utilities {
@@ -24,5 +28,8 @@
   }
   .textSoft {
     @apply text-[#b7bac1];
+  }
+  .bgCard {
+    @apply bg-[#151c2c];
   }
 }

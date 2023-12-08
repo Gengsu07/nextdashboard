@@ -12,7 +12,7 @@ const Navbar = () => {
   const NavbarTitle = pathname.split("/").pop();
   return (
     // container
-    <div className="flex justify-between items-center p-5 rounded-xl bgSoft">
+    <div className="flex justify-between items-center p-3 rounded-xl bgSoft">
       <div className="textSoft font-bold capitalize">{NavbarTitle}</div>
       <div className="flex justify-center items-center gap-5">
         <div className="bg-[#2e374a] p-2 rounded-xl flex justify-center items-center gap-2">

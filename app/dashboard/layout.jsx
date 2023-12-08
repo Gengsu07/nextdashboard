@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
       <div className="bgSoft flex basis-1/5 max-sm:hidden h-screen ">
         <Sidebar />
       </div>
-      <div className="flex flex-col flex-grow max-w-full py-5 pr-5">
+      <div className="flex flex-col flex-grow max-w-full mt-5 mx-5">
         <Navbar />
         {children}
       </div>
