@@ -6,9 +6,9 @@ import Chart from "../components/chart/chart";
 
 const Dashboard = () => {
   return (
-    <div className="mt-5 flex items-center justify-center gap-5">
-      <div className="flex  flex-col gap-5 flex-grow">
-        <div className="flex justify-between items-center gap-2">
+    <div className="mt-5 flex  max-sm:flex-col gap-3 justify-center ">
+      <div className="flex  flex-col gap-5 flex-grow max-w-full">
+        <div className="flex justify-between items-center flex-wrap max-sm:flex-col max-sm:gap-3 gap-5 max-sm:max-w-full ">
           <Card />
           <Card />
           <Card />
@@ -20,7 +20,7 @@ const Dashboard = () => {
           <Chart />
         </div>
       </div>
-      <div className="flex basis-1/5">
+      <div className="flex basis-1/4 ">
         <Rightbar />
       </div>
     </div>
