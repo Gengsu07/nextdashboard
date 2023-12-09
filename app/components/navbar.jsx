@@ -15,7 +15,7 @@ const Navbar = () => {
     <div className="flex justify-between items-center p-3 rounded-xl bgSoft">
       <div className="textSoft font-bold capitalize">{NavbarTitle}</div>
       <div className="flex justify-center items-center gap-5">
-        <div className="bg-[#2e374a] p-2 rounded-xl flex justify-center items-center gap-2">
+        <div className="bg-[#2e374a] p-1 rounded-xl flex justify-center items-center gap-0 ml-3">
           <MdSearch />
           <input
             type="text"
