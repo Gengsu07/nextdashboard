@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { productTableData } from "../../constant/TableData";
+import { producttabledata } from "../../constant/TableData";
+import Link from "next/link";
 
 const ProductTable = () => {
   return (
@@ -15,7 +16,7 @@ const ProductTable = () => {
         </tr>
       </thead>
       <tbody>
-        {productTableData.map((row) => (
+        {producttabledata.map((row) => (
           <tr key={row.Description}>
             <td className="flex gap-3 items-center">
               <div className="flex gap-2 items-center">
@@ -35,12 +36,16 @@ const ProductTable = () => {
             <td>{row.Stock}</td>
             <td>
               <div className="flex gap-2 items-center justify-between max-w-fit">
-                <button className="bg-teal-600 hover:bg-teal-800 rounded-lg text-white px-2 py-1 text-sm border-0">
-                  view
-                </button>
-                <button className="bg-red-600 hover:bg-red-800 rounded-lg text-white py-1 px-2 text-sm border-0">
-                  delete
-                </button>
+                <Link href={`/dashboard/products/${row.Productid}`}>
+                  <button className="bg-teal-600 hover:bg-teal-800 rounded-lg text-white px-2 py-1 text-sm border-0">
+                    view
+                  </button>
+                </Link>
+                <Link href={"/"}>
+                  <button className="bg-red-600 hover:bg-red-800 rounded-lg text-white py-1 px-2 text-sm border-0">
+                    delete
+                  </button>
+                </Link>
               </div>
             </td>
           </tr>

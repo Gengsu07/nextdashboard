@@ -17,7 +17,7 @@ const usertabledata = [
   },
 ];
 
-const productTableData = [
+const producttabledata = [
   {
     Title: "Iphone",
     Description: "Brand New Iphone 14",
@@ -36,4 +36,4 @@ const productTableData = [
   },
 ];
 
-export { usertabledata, productTableData };
+export { usertabledata, producttabledata };
