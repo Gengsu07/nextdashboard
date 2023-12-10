@@ -5,6 +5,7 @@ const usertabledata = [
     Created_at: "10.04.2023",
     Role: "Administrator",
     Status: "Active",
+    Userid: 1,
   },
   {
     Name: "John Travolta",
@@ -12,6 +13,7 @@ const usertabledata = [
     Created_at: "10.02.2023",
     Role: "Client",
     Status: "Passive",
+    Userid: 2,
   },
 ];
 
@@ -22,6 +24,7 @@ const productTableData = [
     Price: "2.000",
     Created_at: "10.04.2023",
     Stock: "100",
+    Productid: 1,
   },
   {
     Title: "Macbook Pro M3",
@@ -29,6 +32,7 @@ const productTableData = [
     Price: "4.000",
     Created_at: "10.04.2023",
     Stock: "50",
+    Productid: 2,
   },
 ];
 
