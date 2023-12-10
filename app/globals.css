@@ -20,6 +20,10 @@
   table td {
     @apply p-2;
   }
+  thead td {
+    @apply text-center font-bold;
+  }
+
 }
 
 @layer utilities {

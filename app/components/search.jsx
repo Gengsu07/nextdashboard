@@ -3,13 +3,13 @@ import { MdSearch } from "react-icons/md";
 
 const Search = ({ placeholder }) => {
   return (
-    <div className="flex justify-between items-center px-5 py-5">
-      <div className="flex justify-start gap-0 items-center border-3 rounded-lg bg-[#2e374a] p-1">
+    <div className="flex justify-between items-center p-5 py-3 ">
+      <div className="flex justify-start gap-0 items-center border-0 rounded-lg bg-[#2e374a] pl-1 py-0">
         <MdSearch />
         <input
           type="text"
           placeholder={placeholder}
-          className="bg-transparent border-none px-2 py-1 text-white outline-none rounded-lg"
+          className="bg-transparent border-none pl-1 py-1 text-white outline-none rounded-lg"
         ></input>
       </div>
 
