@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { producttabledata } from "../../constant/TableData";
 import Link from "next/link";
 
-const ProductTable = () => {
+const ProductTable = ({ data }) => {
+  //
   return (
     <table className="w-full">
       <thead>
@@ -16,27 +16,27 @@ const ProductTable = () => {
         </tr>
       </thead>
       <tbody>
-        {producttabledata.map((row) => (
-          <tr key={row.Description}>
+        {data.map((row) => (
+          <tr key={row.title}>
             <td className="flex gap-3 items-center">
               <div className="flex gap-2 items-center">
                 <Image
-                  src="/noproduct.jpg"
+                  src={row.img || "/noavatar.png"}
                   alt="avatar"
                   width={50}
                   height={50}
                   className="rounded-full object-cover border-2"
                 />
               </div>
-              {row.Title}
+              {row.title}
             </td>
-            <td>{row.Description}</td>
-            <td>{row.Price}</td>
-            <td>{row.Created_at}</td>
-            <td>{row.Stock}</td>
+            <td>{row.description}</td>
+            <td>{row.price}</td>
+            <td>{row.createdat}</td>
+            <td>{row.stock}</td>
             <td>
               <div className="flex gap-2 items-center justify-between max-w-fit">
-                <Link href={`/dashboard/products/${row.Productid}`}>
+                <Link href={`/dashboard/products/${row.productId}`}>
                   <button className="bg-teal-600 hover:bg-teal-800 rounded-lg text-white px-2 py-1 text-sm border-0">
                     view
                   </button>

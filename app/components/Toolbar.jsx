@@ -12,6 +12,9 @@ const Toolbar = ({ placeholder, dest }) => {
   const handleSearch = useDebouncedCallback((e) => {
     const value = e.target.value;
     const params = new URLSearchParams(searchParams);
+
+    //set default page to 1
+    params.set("page", 1);
     if (value) {
       value.length > 2 && params.set("q", value);
     } else {

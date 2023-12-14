@@ -5,8 +5,9 @@ import { fetchUser } from "../../lib/data";
 import UserTable from "./userTable";
 
 const UsersPage = async ({ searchParams }) => {
+  const page = searchParams?.page || 1;
   const q = searchParams?.q || "";
-  const users = await fetchUser(q);
+  const { countUser, users } = await fetchUser(q, page);
   return (
     <div className="bgSoft flex flex-col gap-5 rounded-lg mt-5 w-full px-5 py-5">
       <Toolbar
@@ -17,7 +18,7 @@ const UsersPage = async ({ searchParams }) => {
         <UserTable data={users} />
       </div>
       <div className="w-full">
-        <Pagination />
+        <Pagination count={countUser} />
       </div>
     </div>
   );
