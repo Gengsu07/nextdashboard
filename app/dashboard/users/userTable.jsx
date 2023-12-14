@@ -2,7 +2,7 @@ import Image from "next/image";
 import { usertabledata } from "../../constant/TableData";
 import Link from "next/link";
 
-const UserTable = () => {
+const UserTable = ({ data }) => {
   return (
     <table className="w-full ">
       <thead>
@@ -16,27 +16,28 @@ const UserTable = () => {
         </tr>
       </thead>
       <tbody>
-        {usertabledata.map((row) => (
-          <tr key={row.Name}>
+        {data.map((user) => (
+          <tr key={user.username}>
             <td className="flex gap-3 items-center">
               <div className="flex gap-2 items-center">
                 <Image
-                  src="/noavatar.png"
+                  src={user.img || "/noavatar.png"}
                   alt="avatar"
                   width={50}
                   height={50}
-                  className="rounded-full object-cover border-2"
+                  className="rounded-full object-cover border-1"
                 />
               </div>
-              {row.Name}
+              {user.username}
             </td>
-            <td>{row.Email}</td>
-            <td>{row.Created_at}</td>
-            <td>{row.Role}</td>
-            <td>{row.Status}</td>
+            <td>{user.email}</td>
+            <td>{user.createdAt?.toString().slice(4, 16)}</td>
+            <td>{user.isAdmin ? "Admin" : "Client"}</td>
+            <td>{user.isActive ? "active" : "passive"}</td>
+            <td>{user.phone}</td>
             <td>
               <div className="flex gap-2 items-center justify-between max-w-fit">
-                <Link href={`/dashboard/users/${row.Userid}`}>
+                <Link href={`/dashboard/users/${user.Userid}`}>
                   <button className="bg-teal-600 hover:bg-teal-800 rounded-lg text-white px-2 py-1 text-sm border-0">
                     view
                   </button>

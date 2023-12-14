@@ -1,7 +1,24 @@
+"use client";
 import { MdSearch } from "react-icons/md";
 import Link from "next/link";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { useDebouncedCallback } from "use-debounce";
 
 const Toolbar = ({ placeholder, dest }) => {
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+  const pathname = usePathname();
+
+  const handleSearch = useDebouncedCallback((e) => {
+    const value = e.target.value;
+    const params = new URLSearchParams(searchParams);
+    if (value) {
+      value.length > 2 && params.set("q", value);
+    } else {
+      params.delete("q");
+    }
+    replace(`${pathname}?${params}`);
+  }, 300);
   return (
     <div className="flex justify-between items-center ">
       <div className="flex justify-start gap-0 items-center border-0 rounded-lg bg-[#2e374a] pl-1 py-0">
@@ -10,6 +27,7 @@ const Toolbar = ({ placeholder, dest }) => {
           type="text"
           placeholder={placeholder}
           className="bg-transparent border-none pl-1 py-1 text-white outline-none rounded-lg"
+          onChange={handleSearch}
         ></input>
       </div>
 
