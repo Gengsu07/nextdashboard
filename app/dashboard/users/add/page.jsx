@@ -1,9 +1,17 @@
 import React from "react";
 
 const AddUsersPage = () => {
+  const handleAddUser = async (formData) => {
+    "use server";
+    const { username, email, password, phone, isAdmin, isActive, address } =
+      formData;
+  };
   return (
     <div className=" mt-5 bgSoft rounded-xl h-screen">
-      <form className="flex flex-wrap  justify-between gap-5 px-5 my-5">
+      <form
+        className="flex flex-wrap  justify-between gap-5 px-5 my-5"
+        action={handleAddUser}
+      >
         <input
           type="text"
           name="username"
@@ -26,7 +34,7 @@ const AddUsersPage = () => {
           className="w-[45%] bgCard px-3 py-3 borderTipis outline-none rounded-lg"
         />
         <input
-          type="phone"
+          type="number"
           name="phone"
           placeholder="phone"
           className="w-[45%] bgCard px-3 py-3 borderTipis outline-none rounded-lg"
@@ -36,7 +44,7 @@ const AddUsersPage = () => {
           id="isAdmin"
           className="w-[45%] bgCard px-3 py-3  borderTipis outline-none bgSoft rounded-lg"
         >
-          <option value={false} selected>
+          <option value={false} defaultValue>
             is Admin?
           </option>
           <option value={true}>Yes</option>
@@ -47,7 +55,7 @@ const AddUsersPage = () => {
           id="isActive"
           className="w-[45%] bgCard px-3 py-3  borderTipis outline-none bgSoft rounded-lg"
         >
-          <option value={true} selected>
+          <option value={true} defaultValue>
             is Active?
           </option>
           <option value={true}>Yes</option>

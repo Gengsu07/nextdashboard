@@ -7,7 +7,7 @@ import { fetchProduct } from "../../lib/data";
 const ProductsPage = async ({ searchParams }) => {
   const page = searchParams?.page || 1;
   const q = searchParams?.q || "";
-  const products = await fetchProduct(q, page);
+  const { countProducts, products } = await fetchProduct(q, page);
 
   return (
     <div className="bgSoft flex flex-col gap-5 rounded-lg mt-5 w-full px-5 py-5">
@@ -19,7 +19,7 @@ const ProductsPage = async ({ searchParams }) => {
         <ProductTable data={products} />
       </div>
       <div className="w-full">
-        <Pagination />
+        <Pagination count={countProducts} />
       </div>
     </div>
   );

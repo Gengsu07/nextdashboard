@@ -21,27 +21,32 @@ const Pagination = ({ count }) => {
     replace(`${pathname}?${params}`);
   };
   return (
-    <div className="flex justify-start gap-5 items-center w-full">
-      <button
-        className={classNames({
-          "bg-slate-50 text-slate-500 hover:text-white px-3 py-1 rounded-md border-0 outline-none hover:bg-slate-500 cursor-pointer": true,
-          "bg-transparent hover:bg-transparent cursor-not-allowed ": !hasPrev,
-        })}
-        disabled={!hasPrev}
-        onClick={() => handleChangePage("prev")}
-      >
-        Prev
-      </button>
-      <button
-        className={classNames({
-          "bg-slate-50 text-slate-500 hover:text-white px-3 py-1 rounded-md border-0 outline-none hover:bg-slate-500 cursor-pointer": true,
-          "bg-transparent hover:bg-transparent cursor-not-allowed": !hasNext,
-        })}
-        disabled={!hasNext}
-        onClick={() => handleChangePage("next")}
-      >
-        Next
-      </button>
+    <div className="flex justify-between items-center  w-full">
+      <div className="flex justify-start gap-5 items-center w-full">
+        {hasPrev && (
+          <button
+            className={classNames({
+              "bg-slate-50 text-slate-500 hover:text-white px-3 py-1 rounded-md border-0 outline-none hover:bg-slate-500 cursor-pointer": true,
+            })}
+            onClick={() => handleChangePage("prev")}
+          >
+            Prev
+          </button>
+        )}
+        {hasNext && (
+          <button
+            className={classNames({
+              "bg-slate-50 text-slate-500 hover:text-white px-3 py-1 rounded-md border-0 outline-none hover:bg-slate-500 cursor-pointer": true,
+            })}
+            onClick={() => handleChangePage("next")}
+          >
+            Next
+          </button>
+        )}
+      </div>
+      <p className="whitespace-nowrap">
+        Page {page} of {Math.ceil(count / ITEM_PER_PAGE)}
+      </p>
     </div>
   );
 };

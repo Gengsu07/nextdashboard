@@ -22,10 +22,13 @@ export const fetchProduct = async (q, page) => {
   const ITEM_PER_PAGE = 2;
   try {
     connnectToDB();
+    const countProducts = await Product.find({
+      title: { $regex: regex },
+    }).count();
     const products = await Product.find({ title: { $regex: regex } })
       .limit(ITEM_PER_PAGE)
       .skip((page - 1) * ITEM_PER_PAGE);
-    return products;
+    return { countProducts, products };
   } catch (error) {
     console.log(error);
     throw new Error("Failed to fetch products");
