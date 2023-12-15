@@ -1,16 +1,11 @@
-import React from "react";
+import { HandleAddUser } from "../../../lib/action";
 
 const AddUsersPage = () => {
-  const handleAddUser = async (formData) => {
-    "use server";
-    const { username, email, password, phone, isAdmin, isActive, address } =
-      formData;
-  };
   return (
-    <div className=" mt-5 bgSoft rounded-xl h-screen">
+    <div className=" mt-5 bgSoft rounded-xl h-fit">
       <form
         className="flex flex-wrap  justify-between gap-5 px-5 my-5"
-        action={handleAddUser}
+        action={HandleAddUser}
       >
         <input
           type="text"
@@ -66,7 +61,7 @@ const AddUsersPage = () => {
           name="address"
           id="address"
           cols="30"
-          rows="16"
+          rows="8"
           placeholder="address"
           className="w-full bgCard px-3 py-2  borderTipis outline-none rounded-lg"
         />

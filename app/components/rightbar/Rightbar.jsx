@@ -3,8 +3,8 @@ import { MdPlayCircleFilled, MdReadMore } from "react-icons/md";
 
 const Rightbar = () => {
   return (
-    <div className="fixed mr-5">
-      <div className="bg-linear_gradient py-5  border-3 mb-5 relative px-2 rounded-lg">
+    <div className=" mx-1 flex flex-col gap-5 justify-start">
+      <div className="bg-linear_gradient py-5  mb-5 relative px-2 rounded-lg">
         <div className="absolute right-0 bottom-0 w-[50%] h-[50%]">
           <Image
             src="/astronaut.png"

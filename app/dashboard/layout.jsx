@@ -5,11 +5,11 @@ import Footer from "./../components/footer";
 
 const Layout = ({ children }) => {
   return (
-    <div className="flex gap-5 h-screen  ">
+    <div className="flex gap-5 h-screen my-3 ">
       <div className="bgSoft flex basis-1/5 max-sm:hidden h-screen ">
         <Sidebar />
       </div>
-      <div className="flex flex-col flex-grow basis-4/5 w-full mr-5 mt-2">
+      <div className="flex flex-col flex-grow basis-4/5 w-full mr-5 h-screen">
         <Navbar />
         {children}
         <Footer />

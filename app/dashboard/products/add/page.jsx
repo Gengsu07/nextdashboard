@@ -1,9 +1,13 @@
-import React from "react";
+import { HandleAddProduct } from "./../../../lib/action";
+import { SubmitButton } from "./../../../components/button/submit";
 
 const AddProductPage = () => {
   return (
     <div className=" mt-5 bgSoft rounded-xl h-screen">
-      <form className="flex flex-wrap justify-between gap-5 px-5 my-5">
+      <form
+        className="flex flex-wrap justify-between gap-5 px-5 my-5"
+        action={HandleAddProduct}
+      >
         <input
           type="text"
           name="title"
@@ -42,7 +46,7 @@ const AddProductPage = () => {
           className="w-[45%] bgCard px-3 py-3  borderTipis outline-none rounded-lg"
         />
         <input
-          type="text"
+          type="number"
           name="size"
           placeholder="size"
           className="w-[45%] bgCard px-3 py-3  borderTipis outline-none rounded-lg"
@@ -50,13 +54,11 @@ const AddProductPage = () => {
         <textarea
           name="description"
           cols="30"
-          rows="16"
+          rows="8"
           placeholder="Description"
           className="w-full bgCard px-3 py-3  borderTipis outline-none rounded-lg"
         />
-        <button className="w-full px-7 py-3 text-white bg-teal-500 rounded-lg cursor-pointer border-none">
-          Submit
-        </button>
+        <SubmitButton />
       </form>
     </div>
   );

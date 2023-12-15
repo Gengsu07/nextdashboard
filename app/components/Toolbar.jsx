@@ -34,11 +34,13 @@ const Toolbar = ({ placeholder, dest }) => {
         ></input>
       </div>
 
-      <Link href={dest}>
-        <button className="bg-violet-600 hover:bg-violet-800 flex justify-start items-center rounded-lg border-3 text-white cursor-pointer mr-16 py-1 px-5">
-          Add
-        </button>
-      </Link>
+      <div className="flex ml-auto">
+        <Link href={dest}>
+          <button className="bg-violet-600 hover:bg-violet-800 flex justify-start items-center rounded-lg border-3 text-white cursor-pointer py-1 px-5">
+            Add
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };

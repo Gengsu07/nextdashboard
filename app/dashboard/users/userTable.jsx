@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { usertabledata } from "../../constant/TableData";
 import Link from "next/link";
 
 const UserTable = ({ data }) => {
@@ -12,6 +11,7 @@ const UserTable = ({ data }) => {
           <td>Created at</td>
           <td>Role</td>
           <td>Status</td>
+          <td>Phone</td>
           <td>Action</td>
         </tr>
       </thead>

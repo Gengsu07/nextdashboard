@@ -4,7 +4,7 @@ import MenuItems from "./MenuItems";
 import Image from "next/image";
 const Sidebar = () => {
   return (
-    <div className="flex flex-grow flex-col position-sticky top-10 ml-5 my-5 max-w-full">
+    <div className="flex flex-grow flex-col position-sticky top-10 ml-5  max-w-full h-screen">
       <div className="flex items-center gap-5 mb-5 ">
         <Image
           src="/noavatar.png"
