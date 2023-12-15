@@ -2,6 +2,9 @@
 
 import { Product, User } from "./models";
 import { connnectToDB } from "./utils";
+import bcrypt from "bcrypt";
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 export const HandleAddProduct = async (formData) => {
   const { title, category, price, stock, color, size, description } =
@@ -29,17 +32,21 @@ export const HandleAddProduct = async (formData) => {
     console.log(error);
     throw new Error();
   }
+  revalidatePath("/dashboard/products");
+  redirect("/dashboard/products");
 };
 
 export const HandleAddUser = async (formData) => {
   const { username, email, password, phone, isAdmin, isActive, address } =
     Object.fromEntries(formData);
+  const salt = await bcrypt.genSaltSync(10);
+  const passwordHashed = await bcrypt.hash(password, salt);
   try {
     connnectToDB();
     const newUser = new User({
       username,
       email,
-      password,
+      password: passwordHashed,
       phone,
       isAdmin,
       isActive,
@@ -57,4 +64,6 @@ export const HandleAddUser = async (formData) => {
     console.log(error);
     throw new Error();
   }
+  revalidatePath("/dashboard/users");
+  redirect("/dashboard/users");
 };

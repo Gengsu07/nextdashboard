@@ -7,7 +7,7 @@ const Pagination = ({ count }) => {
   const { replace } = useRouter();
 
   const page = searchParams.get("page") || 1;
-  const ITEM_PER_PAGE = 2;
+  const ITEM_PER_PAGE = 5;
   const params = new URLSearchParams(searchParams);
 
   const hasPrev = ITEM_PER_PAGE * (parseInt(page) - 1) >= ITEM_PER_PAGE;

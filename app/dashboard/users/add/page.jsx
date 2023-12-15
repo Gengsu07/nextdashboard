@@ -1,4 +1,5 @@
 import { HandleAddUser } from "../../../lib/action";
+import Link from "next/link";
 
 const AddUsersPage = () => {
   return (
@@ -65,7 +66,8 @@ const AddUsersPage = () => {
           placeholder="address"
           className="w-full bgCard px-3 py-2  borderTipis outline-none rounded-lg"
         />
-        <button className="w-full px-7 py-3 text-white bg-teal-500 rounded-lg cursor-pointer border-none">
+
+        <button className="w-full rounded-lg cursor-pointer border-none hover:bg-teal-800  text-white bg-teal-500  px-7 py-3">
           Submit
         </button>
       </form>
