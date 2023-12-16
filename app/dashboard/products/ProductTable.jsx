@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { handleDeleteProduct } from "../../lib/action";
 
 const ProductTable = ({ data }) => {
-  //
   return (
     <table className="w-full">
       <thead>
@@ -36,16 +36,18 @@ const ProductTable = ({ data }) => {
             <td>{row.stock}</td>
             <td>
               <div className="flex gap-2 items-center justify-between max-w-fit">
-                <Link href={`/dashboard/products/${row.productId}`}>
+                <Link href={`/dashboard/products/${row._id.valueOf()}`}>
                   <button className="bg-teal-600 hover:bg-teal-800 rounded-lg text-white px-2 py-1 text-sm border-0">
                     view
                   </button>
                 </Link>
-                <Link href={"/"}>
+
+                <form action={handleDeleteProduct}>
+                  <input type="hidden" name="id" value={row._id.valueOf()} />
                   <button className="bg-red-600 hover:bg-red-800 rounded-lg text-white py-1 px-2 text-sm border-0">
                     delete
                   </button>
-                </Link>
+                </form>
               </div>
             </td>
           </tr>

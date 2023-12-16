@@ -67,3 +67,87 @@ export const HandleAddUser = async (formData) => {
   revalidatePath("/dashboard/users");
   redirect("/dashboard/users");
 };
+
+export const handleDeleteUser = async (formData) => {
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    connnectToDB();
+    const deletedUser = await User.findByIdAndDelete(id);
+  } catch (error) {
+    console.log(error);
+    throw new Error();
+  }
+  revalidatePath("/dashboard/users");
+};
+
+export const handleDeleteProduct = async (formData) => {
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    connnectToDB();
+    const deletedProduct = await Product.findByIdAndDelete(id);
+  } catch (error) {
+    console.log(error);
+    throw new Error();
+  }
+  revalidatePath("/dashboard/users");
+};
+
+export const handleUpdateUser = async (formData) => {
+  const { id, username, email, password, phone, isAdmin, isActive, address } =
+    Object.fromEntries(formData);
+
+  const updatedField = {
+    username,
+    email,
+    password,
+    phone,
+    isAdmin,
+    isActive,
+    address,
+  };
+
+  Object.keys(updatedField).map((key) => {
+    (updatedField[key] == "" || undefined) && delete updatedField[key];
+  });
+
+  try {
+    connnectToDB();
+    const updatedUser = await User.findByIdAndUpdate(id, updatedField);
+  } catch (error) {
+    console.log(error);
+    throw new Error();
+  }
+  revalidatePath("/dashboard/users");
+  redirect("/dashboard/users");
+};
+
+export const handleUpdateProduct = async (formData) => {
+  const { id, title, category, price, stock, color, size, description } =
+    Object.fromEntries(formData);
+
+  const updatedField = {
+    title,
+    category,
+    price,
+    stock,
+    color,
+    size,
+    description,
+  };
+
+  Object.keys(updatedField).map((key) => {
+    (updatedField[key] == "" || undefined) && delete updatedField[key];
+  });
+
+  try {
+    connnectToDB();
+    const updatedProduct = await Product.findByIdAndUpdate(id, updatedField);
+  } catch (error) {
+    console.log(error);
+    throw new Error();
+  }
+  revalidatePath("/dashboard/products");
+  redirect("/dashboard/products");
+};

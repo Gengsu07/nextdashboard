@@ -1,65 +1,74 @@
 import React from "react";
 import Image from "next/image";
+import { fetchUser } from "../../../lib/data";
+import { handleUpdateUser } from "../../../lib/action";
 
-const UserDetailPage = () => {
-  const label = [
-    {
-      label: "Username",
-      type: "text",
-      name: "username",
-      placeholder: "username07",
-    },
-    {
-      label: "Email",
-      type: "email",
-      name: "email",
-      placeholder: "username07@gmail.com",
-    },
-    {
-      label: "Password",
-      type: "password",
-      name: "password",
-      placeholder: "secret123",
-    },
-    {
-      label: "Phone",
-      type: "phone",
-      name: "phone",
-      placeholder: "085xxxx",
-    },
-  ];
+const UserDetailPage = async ({ params }) => {
+  const { id } = params;
+  const user = await fetchUser(id);
+
   return (
     <div className="flex justify-between gap-5 w-full h-screen mt-5 max-sm:flex-col">
       <div className="flex flex-col w-[40%] bgSoft rounded-lg px-5 py-5 h-fit max-sm:mx-auto">
         <div className="rounded-lg w-fit mb-5 mx-auto my-auto">
           <Image
-            src="/noavatar.png"
+            src={user.img || "/noavatar.png"}
             alt="avatar"
             width={300}
             height={400}
             className="rounded-md object-cover border-2"
           />
         </div>
-        <p>John Doe</p>
+        <p>{user.username}</p>
       </div>
-      <div className="flex flex-col gap-5 bgSoft w-full px-5 py-5 rounded-lg">
-        {label.map((item) => (
-          <div key={item.label} className="flex flex-col gap-1">
-            <label>{item.label}</label>
-            <input
-              type={item.type}
-              name={item.name}
-              placeholder={item.placeholder}
-              className="bgCard px-3 py-3 borderTipis outline-none rounded-lg"
-            />
-          </div>
-        ))}
+
+      <form
+        action={handleUpdateUser}
+        className="flex flex-col gap-5 bgSoft w-full px-5 py-5 rounded-lg"
+      >
+        <input type="hidden" name="id" value={user._id.valueOf()} />
+        <div className="flex flex-col gap-1">
+          <label>username</label>
+          <input
+            type="text"
+            name="username"
+            placeholder={user.username}
+            className="bgCard px-3 py-3 borderTipis outline-none rounded-lg"
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <label>email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder={user.email}
+            className="bgCard px-3 py-3 borderTipis outline-none rounded-lg"
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <label>password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder={user.password}
+            className="bgCard px-3 py-3 borderTipis outline-none rounded-lg"
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <label>phone</label>
+          <input
+            type="number"
+            name="phone"
+            placeholder={user.phone}
+            className="bgCard px-3 py-3 borderTipis outline-none rounded-lg"
+          />
+        </div>
         <textarea
           name="address"
           id="address"
           cols="30"
           rows="16"
-          placeholder="address"
+          placeholder={user.address || ""}
           className="w-full bgCard px-3 py-2  borderTipis outline-none rounded-lg"
         />
         <select
@@ -70,8 +79,8 @@ const UserDetailPage = () => {
           <option value={false} defaultValue={true}>
             is Admin?
           </option>
-          <option value={true}>Yes</option>
-          <option value={false}>No</option>
+          <option value={user.isAdmin}>Yes</option>
+          <option value={!user.isAdmin}>No</option>
         </select>
         <select
           name="isActive"
@@ -81,13 +90,13 @@ const UserDetailPage = () => {
           <option value={true} defaultValue={true}>
             is Active?
           </option>
-          <option value={true}>Yes</option>
-          <option value={false}>No</option>
+          <option value={user.isActive}>Yes</option>
+          <option value={!user.isActive}>No</option>
         </select>
         <button className="w-full px-7 py-3 text-white bg-teal-500 rounded-lg cursor-pointer border-none">
           Update
         </button>
-      </div>
+      </form>
     </div>
   );
 };

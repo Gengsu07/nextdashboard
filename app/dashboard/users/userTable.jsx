@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { handleDeleteUser } from "./../../lib/action";
 
 const UserTable = ({ data }) => {
   return (
@@ -37,14 +38,17 @@ const UserTable = ({ data }) => {
             <td>{user.phone}</td>
             <td>
               <div className="flex gap-2 items-center justify-between max-w-fit">
-                <Link href={`/dashboard/users/${user.Userid}`}>
+                <Link href={`/dashboard/users/${user._id.valueOf()}`}>
                   <button className="bg-teal-600 hover:bg-teal-800 rounded-lg text-white px-2 py-1 text-sm border-0">
                     view
                   </button>
                 </Link>
-                <button className="bg-red-600 hover:bg-red-800 rounded-lg text-white py-1 px-2 text-sm border-0">
-                  delete
-                </button>
+                <form action={handleDeleteUser}>
+                  <input type="hidden" name="id" value={user._id.valueOf()} />
+                  <button className="bg-red-600 hover:bg-red-800 rounded-lg text-white py-1 px-2 text-sm border-0">
+                    delete
+                  </button>
+                </form>
               </div>
             </td>
           </tr>
