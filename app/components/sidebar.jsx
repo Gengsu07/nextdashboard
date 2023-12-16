@@ -2,6 +2,7 @@ import { MdLogout } from "react-icons/md";
 import menuItems from "../constant/SidebarMenu";
 import MenuItems from "./MenuItems";
 import Image from "next/image";
+import { signOut } from "../auth";
 const Sidebar = () => {
   return (
     <div className="flex flex-grow flex-col position-sticky top-10 ml-5  max-w-full h-screen">
@@ -31,10 +32,17 @@ const Sidebar = () => {
           </li>
         ))}
       </ul>
-      <button className="flex items-center gap-2 p-3 mr-3 my-5  border-none rounded-xl cursor-pointer max-w-full hover:bg-[#2e374a]">
-        <MdLogout />
-        Logout
-      </button>
+      <form
+        action={async () => {
+          "use server";
+          await signOut();
+        }}
+      >
+        <button className="flex items-center gap-2 p-3 mr-3 my-5  border-none rounded-xl cursor-pointer max-w-full hover:bg-[#2e374a]">
+          <MdLogout />
+          Logout
+        </button>
+      </form>
     </div>
   );
 };

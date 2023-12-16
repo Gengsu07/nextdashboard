@@ -5,6 +5,7 @@ import { connnectToDB } from "./utils";
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { signIn } from "../auth";
 
 export const HandleAddProduct = async (formData) => {
   const { title, category, price, stock, color, size, description } =
@@ -150,4 +151,15 @@ export const handleUpdateProduct = async (formData) => {
   }
   revalidatePath("/dashboard/products");
   redirect("/dashboard/products");
+};
+
+export const authenticate = async (formData) => {
+  const { username, password } = Object.fromEntries(formData);
+  try {
+    await signIn("credentials", { username, password });
+    // console.log(status);
+    // redirect("/dashboard");
+  } catch (err) {
+    return "Wrong Credentials";
+  }
 };
